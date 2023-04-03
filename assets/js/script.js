@@ -133,9 +133,13 @@ function searchWeather(queryURL) {
             cityEl.textContent = data.name;
 
             const unixTime = data.dt;
-            const dateObj = new Date(unixTime * 1000);
-            const dateTimeString = dateObj.toLocaleString();
-            dateEl.textContent = dateTimeString;
+            const timezoneOffset = data.timezone;
+            const dstOffset = new Date().getTimezoneOffset() * 60;
+            const localTimestamp = unixTime + timezoneOffset + dstOffset;
+
+            const date = new Date(localTimestamp * 1000);
+            const localTime = date.toLocaleTimeString();
+            dateEl.textContent = localTime;
 
             const weatherIcon = data.weather[0].icon;
             weatherIconEl.setAttribute('src', `http://openweathermap.org/img/wn/${weatherIcon}.png`);
