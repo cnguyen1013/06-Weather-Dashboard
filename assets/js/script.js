@@ -1,4 +1,5 @@
 
+// Initialization of variables 
 const apiKey = "818f28f3aaf1cb71367192e664fdef1c";
 const searchFormEl = document.querySelector("#search-form");
 const fiveDayDiv = document.querySelector('.fiveDay .row');
@@ -18,9 +19,13 @@ const options = {
     year: 'numeric'
 };
 
+// Interacts with the DOM in a call to ensure that 
+// the code isnt run until the browser has finished rendering all the elements
+// in the html
 document.addEventListener("DOMContentLoaded", function () {
 
     const houstonURL = buildURLFromInputs("Houston");
+    // The default city is Houston upon initial load
     searchWeather(houstonURL);
 
     let saved_searches = JSON.parse(localStorage.getItem("saved_cities")) || [];
@@ -31,12 +36,22 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function buildURLFromInputs(city) {
+
+    // This function generates the url by the city being submitted
+    // It'll return the formatted URL
+
+    // city: string
+
     if (city) {
         return `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
     }
 }
 
 function save_searches(city) {
+
+    // This function saves the selected city into local storage
+
+    // city: string
 
     let saved_cities = JSON.parse(localStorage.getItem("saved_cities")) || [];
     let searchObj = {city};
@@ -47,6 +62,10 @@ function save_searches(city) {
 }
 
 function generate_prev_searches(data) {
+
+    // This function generates buttons of the previously searched cities
+
+    // data: array, contains the array of previous searched cities
 
     city_names = [];
 
@@ -74,6 +93,10 @@ function generate_prev_searches(data) {
 }
 
 function generate_containers(data) {
+
+    // This function generates the cards of the 5 day forecast of the selected city
+
+    // data: object, stored data from API call
 
     let dataArray = [];
 
@@ -123,6 +146,10 @@ function generate_containers(data) {
 }
 
 function searchWeather(queryURL) {
+
+    // This function submits the API request from the formatted URL containing the city 
+
+    // queryURL: string, formatted URL
 
     fetch(queryURL)
     .then(function (response) {
@@ -180,6 +207,8 @@ function searchWeather(queryURL) {
 }
 
 function handleSearchFormSubmit(event) {
+
+    // This function is the event listener of the submit button when clicked
 
     event.preventDefault();
     
