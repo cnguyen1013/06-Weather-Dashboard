@@ -22,4 +22,68 @@
     <title>Weather Dashboard</title>
   </head>
 
+  <body>
+    <header class="container">
+        <div class="title">
+            <h1>Weather Dashboard</h1>
+        </div>
+    </header>
+    <main class="container dashboard">
+        <div class="row p-2">
+            <!-- Right column with current weather and 5 day forecast -->
+            <div class="col-sm-12 col-md-9 order-md-2">
+                <div class="row">
+                    <!-- Current Weather Forecast -->
+                    <div class="col-12 currentWeather p-0 border border-dark rounded border-thick">
+                        <div class="d-flex cityName">
+                            <h2 id="city"></h2>
+                            <h3 id="date"></h3>
+                            <img id="weather-icon"/>
+                        </div>
+                        <p class="pt-1 pl-1">Temperature: <span id="temperature"></span> &deg;F</p>
+                        <p class="pl-1">Wind: <span id="wind"></span> MPH</p>
+                        <p class="pl-1">Humidity: <span id="humidity"></span>% </p>
+                    </div>
+
+                    <!-- 5 Day forecast -->
+                    <div class="col-12 fiveDay">
+                        <h3>5 Day Forecast:</h3>
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+            </div>           
+
+            <!-- Left column - city search form and previously searched cities list -->
+            <div class="col-sm-12 col-md-3 left-panel order-md-1">
+                <form id="search-form">
+                    <div class="form-row">
+                        <div class="form-group col-8 mb-2 w-100">
+                            <label for="city-input w-100" class="font-weight-bold h4">Search for a City:</label>
+                            <input type="text" placeholder="City" class="form-control" id="city-input">
+                        </div>
+                        <div class="col-auto w-100">
+                            <button class="btn btn-primary  btn-block mb-2 align-text-bottom w-100" id="search-btn">Search
+                                <i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+ 
+                <div class="row recent-searches mt-3">
+                    <div class="col-sm-12">
+                        <h2>Recent searches:</h2>
+                    </div>
+                </div>
+                <!-- Previously searched cities -->
+                <div class="row cityList m-0">
+                    <!-- City buttons generated here-->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./assets/js/script.js"></script>
+    
+</body>
+
 </html>
