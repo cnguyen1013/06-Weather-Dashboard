@@ -6,7 +6,7 @@ A weather dashboard that retrieves weather data for cities in a browser with dyn
 
 ## Main Site
 
-![Main Site](assets/images/main-site-01.jpg)
+![Main Site](assets/images/main-site-01.png)
 
 ## Location of Repository
 
